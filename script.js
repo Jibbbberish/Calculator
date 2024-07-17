@@ -1,3 +1,10 @@
+let nOne;
+let operator;
+let nTwo;
+const btns = document.querySelectorAll(".button");
+const text = document.querySelector("p");
+const buttons = Array.from(btns);
+
 function addition(nOne, nTwo) {
     return nOne+nTwo;
 }
@@ -14,10 +21,6 @@ function division(nOne, nTwo) {
     return nOne/nTwo;
 }
 
-let nOne;
-let operator;
-let nTwo;
-
 function operate(nOne, nTwo, operator) {
     switch (operator) {
         case "+":
@@ -29,4 +32,13 @@ function operate(nOne, nTwo, operator) {
         case "/":
             return division(nOne, nTwo);
     }
+}
+
+let equation = text.textContent;
+
+for (let i=0; i<buttons.length; i++) {
+    buttons[i].addEventListener("click", () => {
+        text.textContent += buttons[i].textContent + " "; 
+        equation = text.textContent;
+    });
 }
