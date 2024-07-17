@@ -3,6 +3,7 @@ const text = document.querySelector("p");
 const buttons = Array.from(btns);
 const equal = document.querySelector("#equals");
 const clear = document.querySelector("#clear");
+const decimal = document.querySelector("#decimal");
 
 function addition(nOne, nTwo) {
     n = Number(nOne);
@@ -11,15 +12,25 @@ function addition(nOne, nTwo) {
 }
 
 function subtraction(nOne, nTwo) {
-    return nOne-nTwo;
+    n = Number(nOne);
+    nn = Number(nTwo);
+    return n-nn;
 }
 
 function multiplication(nOne, nTwo) {
-    return nOne*nTwo;
+    n = Number(nOne);
+    nn = Number(nTwo);
+    return n*nn;
 }
 
 function division(nOne, nTwo) {
-    return nOne/nTwo;
+    if (nTwo!=0) {
+        n = Number(nOne);
+        nn = Number(nTwo);
+        return n/nn;
+    } else {
+        return "I think dividing by zero is a great idea!"
+    }
 }
 
 function operate(nOne, nTwo, operator) {
@@ -35,7 +46,7 @@ function operate(nOne, nTwo, operator) {
     }
 }
 
-let equation;
+let equation = [];
 let numberOne;
 let op;
 let numberTwo;
@@ -49,18 +60,23 @@ for (let i=0; i<buttons.length; i++) {
         } else {
             text.textContent += btn;
         }
-
+        
         equation = (text.textContent).split(" ");
         numberOne = equation[0];
         op = equation[1];
         numberTwo = equation[2];
+        console.log(equation, equation.length);
     });
 }
+
+decimal.addEventListener("click", () => {
+    text.textContent += ".";
+});
 
 let result;
 
 equal.addEventListener("click", () => {
-    result = operate(numberOne, numberTwo, op);
+    result = (operate(numberOne, numberTwo, op));
     text.textContent = result;
 });
 
@@ -69,7 +85,6 @@ clear.addEventListener("click", () => {
     numberOne = null;
     op = null;
     numberTwo = null;
-    equation = null;
+    equation = [];
     result = null;
 });
-
