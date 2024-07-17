@@ -4,3 +4,15 @@ body, html {
     padding: 0;
     background-color: rgb(51, 51, 51);
 }
+
+#buttons {
+    display: flex;
+}
+
+#numbers {
+    display: flex;
+}
+
+#operators {
+    display: flex;
+}

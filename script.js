@@ -18,7 +18,7 @@ let nOne;
 let operator;
 let nTwo;
 
-function operate(nOne, operator, nTwo) {
+function operate(nOne, nTwo, operator) {
     switch (operator) {
         case "+":
             return addition(nOne, nTwo);
