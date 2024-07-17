@@ -35,10 +35,10 @@ function operate(nOne, nTwo, operator) {
     }
 }
 
-let equation = (text.textContent).split(" ");
-let numberOne = equation[0];
-let op = equation[1];
-let numberTwo = equation[2];
+let equation;
+let numberOne;
+let op;
+let numberTwo;
 
 for (let i=0; i<buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
@@ -65,6 +65,11 @@ equal.addEventListener("click", () => {
 });
 
 clear.addEventListener("click", () => {
-    
+    text.textContent = null;
+    numberOne = null;
+    op = null;
+    numberTwo = null;
+    equation = null;
+    result = null;
 });
 
