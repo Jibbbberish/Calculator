@@ -1,12 +1,13 @@
-let nOne;
-let operator;
-let nTwo;
 const btns = document.querySelectorAll(".button");
 const text = document.querySelector("p");
 const buttons = Array.from(btns);
+const equal = document.querySelector("#equals");
+const clear = document.querySelector("#clear");
 
 function addition(nOne, nTwo) {
-    return nOne+nTwo;
+    n = Number(nOne);
+    nn = Number(nTwo);
+    return n+nn;
 }
 
 function subtraction(nOne, nTwo) {
@@ -34,11 +35,36 @@ function operate(nOne, nTwo, operator) {
     }
 }
 
-let equation = text.textContent;
+let equation = (text.textContent).split(" ");
+let numberOne = equation[0];
+let op = equation[1];
+let numberTwo = equation[2];
 
 for (let i=0; i<buttons.length; i++) {
     buttons[i].addEventListener("click", () => {
-        text.textContent += buttons[i].textContent + " "; 
-        equation = text.textContent;
+        let btn = buttons[i].textContent;
+
+        if (btn == "*" || btn == "/" || btn == "+" || btn == "-") {
+            text.textContent += " " + btn + " ";
+        } else {
+            text.textContent += btn;
+        }
+
+        equation = (text.textContent).split(" ");
+        numberOne = equation[0];
+        op = equation[1];
+        numberTwo = equation[2];
     });
 }
+
+let result;
+
+equal.addEventListener("click", () => {
+    result = operate(numberOne, numberTwo, op);
+    text.textContent = result;
+});
+
+clear.addEventListener("click", () => {
+    
+});
+
